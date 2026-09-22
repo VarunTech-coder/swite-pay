@@ -1,0 +1,6 @@
+{
+  "name": "SwiftScan",
+  "description": "Retail self-checkout and in-store inventory portal with barcode scanning, catalog locator, and digital exit pass.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

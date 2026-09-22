@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #059669;
+  --primary-dark: #047857;
+  --accent: #f59e0b;
+  --surface: #ffffff;
+  --bg: #f8fafc;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* PURE CSS ANIMATIONS */
+@keyframes laserSweep {
+  0% { top: 12%; opacity: 0.8; }
+  50% { top: 88%; opacity: 1; filter: drop-shadow(0 0 10px #10b981); }
+  100% { top: 12%; opacity: 0.8; }
+}
+
+.scanner-laser {
+  animation: laserSweep 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulseRing {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 0.4; }
+  100% { transform: scale(0.95); opacity: 0.9; }
+}
+
+.pulse-effect {
+  animation: pulseRing 2.4s ease-in-out infinite;
+}
+
+@keyframes progressCountdown {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 283; }
+}
+
+.timer-ring-circle {
+  stroke-dasharray: 283;
+}
+
+@keyframes toastSlide {
+  0% { transform: translateY(-100%); opacity: 0; }
+  15% { transform: translateY(0); opacity: 1; }
+  85% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0; }
+}
+
+.pure-css-toast {
+  animation: toastSlide 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes verifiedBadgePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  50% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+}
+
+.verified-pulse {
+  animation: verifiedBadgePulse 2s infinite;
+}
+
+@keyframes barcodeShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.barcode-watermark {
+  background: linear-gradient(90deg, #1e293b 0%, #334155 50%, #1e293b 100%);
+  background-size: 200% 100%;
+  animation: barcodeShimmer 3s ease-in-out infinite;
+}
+
+/* Custom Mobile Scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Print Stylesheet for Printable Barcode Stickers */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Hide headers, toasts, nav bars, and backdrops when printing */
+  header, nav, .print\:hidden, .pure-css-toast {
+    display: none !important;
+  }
+
+  /* Make sure the printable sticker is fully visible and high contrast */
+  #printable-barcode-area {
+    border: 2px solid #000 !important;
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    page-break-inside: avoid !important;
+  }
+}
